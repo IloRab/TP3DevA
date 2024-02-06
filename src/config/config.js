@@ -16,6 +16,10 @@ export const getConfigNumber = () => {
     };
 }
 
+export const getNumberWord = () => {
+    return process.env.NUMBER_WORD
+}
+
 export const getTypeMessage = () => {
     return process.env.MESSAGE
 }
