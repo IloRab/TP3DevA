@@ -6,6 +6,6 @@ WORKDIR /home/node/app
 COPY package*.json ./
 #RUN npm install -g npm@9.8.1
 RUN npm install
-COPY . .
+COPY .. .
 
 CMD [ "node", "src/server.js" ]
