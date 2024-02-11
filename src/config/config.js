@@ -17,7 +17,8 @@ export const getConfigNumber = () => {
 }
 
 export const getNumberWord = () => {
-    return process.env.NUMBER_WORD
+    //console.log(process.env.NUMBER_WORD)
+    return Number (process.env.NUMBER_WORD)
 }
 
 export const getTypeMessage = () => {

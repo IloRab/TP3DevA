@@ -5,8 +5,8 @@ const isLocalBroker = getLocalBroker()
 
 const redpanda = new Kafka({
     brokers: [
-        '192.168.149.129:19092'
-        ]//'localhost:19092'],
+        isLocalBroker ? `${process.env.HOST_IP}:9092` : 'redpanda-0:9092',
+        'localhost:19092'],
 })
 
 const admin = redpanda.admin()
