@@ -1,0 +1,32 @@
+# Version of Docker-compose
+version: '3.9'
+services:
+
+  myredis:
+    container_name: "myredis"
+    image: redis:alpine
+    restart: always
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass redispwd
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+
+  mynode:
+    build:
+      context: nodejs
+      dockerfile: Dockerfile
+    container_name: nodejs-container
+    links:
+      - myredis
+    ports:
+      - '5432:5432'
+
+  react:
+    build:
+      context: react
+      dockerfile: Dockerfile
+    container_name: react-container
+    ports:
+      - '3000:3000'
+    stdin_open: true
